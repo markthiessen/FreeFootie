@@ -1,73 +1,90 @@
-<div class="topcoat-navigation-bar">
-	<div class="topcoat-navigation-bar__item left quarter">
-			<button class="topcoat-icon-button" ng-click="go('/admin/game')">< Back</button>
-    </div>
-	<div class="topcoat-navigation-bar__item center half">
-        <h1 class="topcoat-navigation-bar__title">Game Details</h1>
+<navbar>
+  <button class="btn btn-default pull-left" ng-click="go('/admin/game')">&lt; Back</button>
+  <div class="navbar-brand title">Free Footie - Game Details</div>
+</navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal" ng-submit="save()">
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Location:</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" ng-options="loc._id as loc.name for loc in locations" ng-model="game.location"></select>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Date:</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" type="date" ng-model="game.dateobj" value={{item.dateobj}} ng-change="updateDate()"/>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-3">Time:</label>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-xs-4 col-sm-4">
+                                <select class="form-control" ng-model="game.timeobj.hours" ng-options="hour as hour for hour in hourOptions" ng-change="updateDate()"></select>
+                            </div>
+                            <div class="col-xs-4 col-sm-4">
+                               <select class="form-control" ng-model="game.timeobj.minutes" ng-options="minute as formatMinute(minute) for minute in minuteOptions" ng-change="updateDate()"></select>
+                           </div>
+                           <div class="col-xs-4 col-sm-4">
+                            <select class="form-control" ng-model="game.timeobj.isPm" ng-change="updateDate()">
+                                <option value="true">PM</option>
+                                <option value="false">AM</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group" style="margin-top:50px;">
+                <label class="control-label col-sm-3">Home Team:</label>
+                <div class="col-sm-9">
+                    <select class="form-control" ng-options="team._id as team.name for team in teams" ng-model="game.home" ng-change="updateTeams()"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                 <label class="control-label col-sm-3">Coach:</label>
+
+                <div class="col-sm-9">
+                   <p class="form-control-static"><b>{{home.coach}}</b> ({{home.phone}})</p>
+               </div>
+           </div>
+        <div class="form-group">
+            <label class="control-label col-sm-3">Away Team:</label>
+            <div class="col-sm-9">
+               <select class="form-control" ng-options="team._id as team.name for team in teams" ng-model="game.away" ng-change="updateTeams()"></select>
+           </div>
+       </div>
+       <div class="form-group">
+       <label class="control-label col-sm-3">Coach:</label>
+       <div class="col-sm-9">
+        <p class="form-control-static">
+           <b>{{away.coach}}</b> ({{away.phone}})
+           </p>
+       </div>
+   </div>
+
+   <div class="form-group" style="margin-top:50px;">
+    <label class="control-label col-sm-3">Status:</label>
+    <div class="col-sm-9">
+        <div class="btn-group">
+
+            <button class="btn btn-default" ng-class="{active: game.state==null}" ng-click="game.state=null">Not Started</button><button class="btn btn-default" ng-class="{active:  game.state=='inprogress'}" ng-click="game.state='inprogress'">In Progress</button><button class="btn btn-default" ng-class="{active: game.state=='complete'}" ng-click="game.state='complete'">Complete</button>
+
+        </div>
     </div>
 </div>
-<div class="topcoat-list">
-    <ul class="topcoat-list__container">
-
-            <div class="topcoat-navigation-bar__item center full">
-                <h1 class="topcoat-navigation-bar__title ng-binding">{{location.name}}</h1>
-                
-                
-            </div>
-
-            <div class="team-info">
-
-            <div>
-            <em>Location:</em>
-                <select ng-options="loc._id as loc.name for loc in locations" ng-model="game.location"></select>
-                
-                </div>
-                <div>
-            <em>Date:</em>
-            <input type="date" ng-model="game.dateobj" value={{item.dateobj}} ng-change="updateDate()"/>
-            </div>
-            <div>
-            <em>Time:</em>
-            <select ng-model="game.timeobj.hours" ng-options="hour as hour for hour in hourOptions" ng-change="updateDate()"></select>
-            <select ng-model="game.timeobj.minutes" ng-options="minute as formatMinute(minute) for minute in minuteOptions" ng-change="updateDate()"></select>
-
-
-            <select ng-model="game.timeobj.isPm" ng-change="updateDate()">
-                <option value="true">PM</option>
-                <option value="false">AM</option>
-            </select>
-            </div>
-             <br/><br/>
-            <div>
-            </div>
-                <div>
-                    <em>Home Team:</em>
-                    <select ng-options="team._id as team.name for team in teams" ng-model="game.home" ng-change="updateTeams()"></select>
-                </div>
-                <div>
-                    <em>Coach:</em> <b>{{home.coach}}</b> ({{home.phone}})
-                </div>
-                <div class="vs">vs</div>
-                <div>
-                    <em>Away Team:</em>
-
-                    <select ng-options="team._id as team.name for team in teams" ng-model="game.away" ng-change="updateTeams()"></select>
-                </div>
-                <div>
-                    <em>Coach:</em> <b>{{away.coach}}</b> ({{away.phone}})
-
-                </div>
-
-            <div class="btn-group">
-
-<button class="topcoat-button btn-left" ng-class="{selected: game.state==null}" ng-click="game.state=null">Not Started</button><button class="topcoat-button btn-middle" ng-class="{selected:  game.state=='inprogress'}" ng-click="game.state='inprogress'">In Progress</button><button class="topcoat-button btn-right" ng-class="{selected: game.state=='complete'}" ng-click="game.state='complete'">Complete</button>
-                  
-            </div>
-            </div>
-    </ul>
-    <button class="topcoat-button" ng-click="save()">Save</button>
-
+    <button type="submit" class="btn btn-primary pull-right">Save</button>
+</form>
+</div>
 </div>
 
-
-
+</div>
