@@ -1,5 +1,7 @@
 @import (less) "icomatic.css";
-@import (less) "../vendor/topcoat/css/topcoat-mobile-light.css";
+/*@import (less) "../vendor/topcoat/css/topcoat-mobile-light.css";*/
+@import (less) "../vendor/bootstrap/less/bootstrap.less";
+
 html, body{
     height:100%;
 }
@@ -154,11 +156,11 @@ a {
 }
 
 .list {
-    .topcoat-list;
+    /*.topcoat-list;*/
 		background:#E9EcEb;
 
     ul {
-        .topcoat-list__container;
+        /*.topcoat-list__container;*/
 				color: #222;
 
         li {
@@ -166,7 +168,7 @@ a {
             padding-bottom: 5px;
             padding-right: 0;
             display: flex;
-            .topcoat-list__item;
+            /*.topcoat-list__item;*/
 
 						&:hover{
 								background:#Eff3f2;
@@ -224,27 +226,17 @@ map {
 		}
 }
 
-navbar {
-    display: block;
-    .topcoat-navigation-bar;
-
-    h1 {
-        .topcoat-navigation-bar__title;
-        line-height: 70px;
-        text-align: center;
+.navbar {
+    background:#292929;
+    border-radius:0;
+    .navbar-brand{
+        color:white;
     }
-
-    button {
-        .topcoat-button--cta;
-        margin-top: 10px;
-    }
-
-    .left {
-        float: left;
-    }
-
-    .right {
-        float: right;
+    .btn{
+        margin:8px 0;
+        &.pull-left{
+            margin-right:10px;
+        }
     }
 }
 
@@ -351,7 +343,7 @@ navbar {
 
 
 //Property Directive
-
+/*
 input.property {
   border: none;
   background: none;
@@ -371,19 +363,19 @@ property {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
-}
+}*/
 
 //Navigation Directive
 
 navigation {
   display: block;
-  .topcoat-navigation-bar;
+  /*.topcoat-navigation-bar;*/
 
   .navigation.content {
     line-height: 70px;
     text-align: center;
   }
   span {
-    .topcoat-navigation-bar__title;
+    /*.topcoat-navigation-bar__title;*/
   }
 }
