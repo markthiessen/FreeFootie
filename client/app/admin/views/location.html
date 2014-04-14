@@ -1,20 +1,17 @@
+<navbar>
+  <button class="btn btn-default pull-left" ng-click="go('admin')">&lt; Back</button>
+  <div class="navbar-brand title">Free Footie - Locations</div>
+  <button class="btn btn-default pull-right" ng-click="go('/admin/location/new')">Add</button>
+</navbar>
 
-<div class="topcoat-navigation-bar">
-	<div class="topcoat-navigation-bar__item left quarter">
-			<button class="topcoat-icon-button" ng-click="go('admin')">< Back</button>
-    </div>
-	<div class="topcoat-navigation-bar__item center half">
-        <h1 class="topcoat-navigation-bar__title">Locations</h1>
-    </div>
-    <div class="topcoat-navigation-bar__item right quarter">
-		<button class="topcoat-button" ng-click="go('/admin/location/new')">Add</button>
-    </div>
-</div>
-
-<div class="topcoat-list">
-	<ul class="topcoat-list__container" >
-		<li ng-repeat="location in locations | orderBy:'name'" ng-click="go('/admin/location/'+location._id)" class="topcoat-list__item">
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<ul class="list-group" >
+		<li ng-repeat="location in locations | orderBy:'name'" ng-click="go('/admin/location/'+location._id)" class="list-group-item">
 		{{location.name}}
 		</li>
 	</ul>
+</div>
+</div>
 </div>
