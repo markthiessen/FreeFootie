@@ -12,7 +12,7 @@ Starting work on this project is easy. You just need to install the prereqs for 
     git clone https://github.com/ConCode/FreeFootie
     cd FreeFootie
     npm install
-    mongod 
+    mongod
     gulp init
     gulp server
 
@@ -40,3 +40,20 @@ The http server is started and configured in server.js. Setting things like port
 #### Ref:
 
 - /ref (Dashboard)
+
+#### Debugging
+
+If you need to debug the solution, use [node-inspector](https://github.com/node-inspector/node-inspector).
+Since gulp spawns nodemon as a second process, you can't simply run `node-debug gulp`.
+If you are trying to debug something in the build system, you can just use:
+
+    node-debug /usr/local/bin/gulp init
+
+If, however, you are testing the server, you need to run it explicitly. The server requires
+some environment variables to be set. As a result, use the `env` command like:
+
+    env NODE_SERVER_PORT=3000 NODE_PUBLIC_DIRECTORY=.tmp node-debug server.js
+
+If you're on Windows, I have no idea. Sorry. Also keep in mind that if your default browser
+is something other than Chrome, the debug sequence doesn't work. Set your default to Chrome
+and you will be fine.

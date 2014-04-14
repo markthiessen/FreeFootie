@@ -6,12 +6,10 @@
   <div class="row">
     <div class="col-sm-12">
       <form class="form-horizontal">
-        <div ng-hide="edit.editing">
           <property title="Team Name" model="currentTeam.name" class="form-group"></property>
           <property title="Coach" model="currentTeam.coach" class="form-group"></property>
           <property title="Coach Phone" model="currentTeam.phone" class="form-group"></property>
           <property title="Division" model="currentTeam.division" options="division._id as division.name for division in divisions" class="form-group"></property>
-        </div>
         <div class="form-group" ng-show="edit.editing" style="line-height: 50px">
           <h4 class="col-xs-12">Coach:</h4>
           <div class="col-xs-12">
@@ -19,7 +17,7 @@
           <input type="text" class="form-control" placeholder="Phone Number" ng-model="currentTeam.phone"/>
           </div>
         </div>
-        <div ng-repeat="player in players" class="topcoat-list__item">
+        <div ng-repeat="player in currentTeam.players" class="topcoat-list__item">
          {{player.number}}&nbsp - {{player.name}}
        </div>
        <div class="edit-row" ng-show="needsSave">
@@ -27,7 +25,7 @@
         <button class="btn btn-default" ng-click="cancel()">Cancel</button>
       </div>
     </form>
-    <div class="vs" style="margin-top:10px; font-weight: bold" ng-click="edit.editing=true">+</div>
+    <div class="vs" style="margin-top:10px; font-weight: bold" ng-click="addPlayer()">+</div>
   </div>
 </div>
 </div>
