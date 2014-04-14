@@ -3,7 +3,7 @@
 angular.module('freefootieApp')
   .controller('StandingsCtrl', function ($scope, $resource) {
 
-      var poolsSrc = $resource('/api/pools/');
+      var poolsSrc = $resource('/api/divisions/');
       var teamsSrc = $resource('/api/teams/');
 
       poolsSrc.query(function(pools) {

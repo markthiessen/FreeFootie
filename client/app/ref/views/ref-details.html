@@ -1,28 +1,49 @@
 <navbar>
-	<button class="left" back>Back</button>
-	<button class="right" ng-click="score.checkedin=true" ng-hide="score.checkedin">Check In</button>
-	<h1>{{game._location.name}}</h1>
+	<button class="btn btn-default pull-left" ng-click="go('/ref')">Back</button>
+  	<div class="navbar-brand title">{{game._location.name}}</div>
+	<button class="btn btn-default pull-right" ng-click="score.checkedin=true" ng-hide="score.checkedin">Check In</button>
 </navbar>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+
 <div ng-hide="score.checkedin">
 	<map mark="game._location" style="height: 300px; width: 100%"></map>
 </div>
+</div>
+</div>
 <div ng-show="score.checkedin" class="score-pane">
-	<div class="row">
+
+<div class="row">
+<div class="col-sm-12">
 		{{game._home.name}}
 		<span class="pull-right">
-			<button class="topcoat-button" ng-click="score.home = abs(score.home - 1)" ng-hide="edit.submitted">-</button>
+			<button class="btn btn-default" ng-click="score.home = abs(score.home - 1)" ng-hide="edit.submitted">-</button>
 			<input style="vertical-align:middle;" type="text" ng-model="score.home" ng-disabled="true" class="score-input">
-			<button class="topcoat-button" ng-click="score.home = score.home + 1" ng-hide="edit.submitted">+</button>
+			<button class="btn btn-default" ng-click="score.home = score.home + 1" ng-hide="edit.submitted">+</button>
 		</span>
+		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-top:50px;">
+	<div class="col-sm-12">
 		{{game._away.name}}
 		<span class="pull-right">
-			<button class="topcoat-button" ng-click="score.away = abs(score.away - 1)" ng-hide="edit.submitted">-</button>
+			<button class="btn btn-default" ng-click="score.away = abs(score.away - 1)" ng-hide="edit.submitted">-</button>
 			<input style="vertical-align:middle;" type="text" ng-model="score.away" ng-disabled="true" class="score-input">
-			<button class="topcoat-button" ng-click="score.away = score.away + 1" ng-hide="edit.submitted">+</button>
+			<button class="btn btn-default" ng-click="score.away = score.away + 1" ng-hide="edit.submitted">+</button>
 		</span>
+		</div>
 	</div>
-	<button ng-class="{false: 'topcoat-button--cta', true: 'topcoat-button'}[edit.submitted]" class="submit" ng-click="edit.submitted=true">{{{false: 'Submit Score', true: 'Thank You'}[edit.submitted]}}</button>
+	<div class="row" style="margin-top:100px;">
+	<div class="col-sm-12">
+
+	
+	<button ng-class="{false: 'btn-primary', true: 'btn-default'}[edit.submitted]" class="btn pull-right" ng-click="edit.submitted=true">{{{false: 'Submit Score', true: 'Thank You'}[edit.submitted]}}</button>
+	</div>
+	</div>
 </div>
+
+</div>
+
+
 <purple-card ng-show="score.checkedin" team-one="game._home" team-two="game._away" commit="addPurpleCard"></purple-card>
