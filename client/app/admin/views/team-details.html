@@ -1,26 +1,31 @@
-<div class="topcoat-navigation-bar">
-	<div class="topcoat-navigation-bar__item left quarter">
-			<button class="topcoat-icon-button" ng-click="go('/admin/team')">< Back</button>
-    </div>
-	<div class="topcoat-navigation-bar__item center half">
-    <h1 class="topcoat-navigation-bar__title">{{currentTeam.name}}</h1>
-    </div>
+<navbar>
+  <button class="btn btn-default pull-left" ng-click="go('/admin/team')">&lt; Back</button>
+  <div class="navbar-brand title">{{currentTeam.name}}</div>
+</navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form-horizontal">
+          <property title="Team Name" model="currentTeam.name" class="form-group"></property>
+          <property title="Coach" model="currentTeam.coach" class="form-group"></property>
+          <property title="Coach Phone" model="currentTeam.phone" class="form-group"></property>
+          <property title="Division" model="currentTeam.division" options="division._id as division.name for division in divisions" class="form-group"></property>
+        <div class="form-group" ng-show="edit.editing" style="line-height: 50px">
+          <h4 class="col-xs-12">Coach:</h4>
+          <div class="col-xs-12">
+          <input type="text" class="form-control" placeholder="Name" ng-model="currentTeam.coach"/>
+          <input type="text" class="form-control" placeholder="Phone Number" ng-model="currentTeam.phone"/>
+          </div>
+        </div>
+        <div ng-repeat="player in currentTeam.players" class="topcoat-list__item">
+         {{player.number}}&nbsp - {{player.name}}
+       </div>
+       <div class="edit-row" ng-show="needsSave">
+        <button class="btn btn-primary" ng-click="update(currentTeam)" >Save</button>
+        <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+      </div>
+    </form>
+    <div class="vs" style="margin-top:10px; font-weight: bold" ng-click="addPlayer()">+</div>
+  </div>
 </div>
-<div class="topcoat-list">
-  <ul class="topcoat-list__container">
-    <li class="topcoat-list__item">
-        <property title="Team Name" model="currentTeam.name"></property>
-        <property title="Coach" model="currentTeam.coach"></property>
-        <property title="Coach Phone" model="currentTeam.phone"></property>
-        <property title="Division" model="currentTeam.division" options="division._id as division.name for division in divisions"><property>
-	    </li>
-       <li ng-repeat="player in currentTeam.players" class="topcoat-list__item">
-             {{player.number}}&nbsp - {{player.name}}
-	    </li>
-      <li class="edit-row" ng-show="needsSave">
-        <button class="topcoat-button--cta" ng-click="update(currentTeam)" >Save</button>
-        <button class="topcoat-button" ng-click="cancel()">Cancel</button>
-      </li>
-  </ul>
 </div>
-<div class="vs" style="margin-top:10px; font-weight: bold" ng-click="addPlayer()">+</div>

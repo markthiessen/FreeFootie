@@ -1,12 +1,24 @@
-<div class="topcoat-list">
-    <ul class="topcoat-list__container">
-      <li ng-repeat="div in divs" class="topcoat-list__item">
-        <property title="Name" model="div.name"></property>
-      </li>
-      <li class="topcoat-list__item" ng-show="needsSave">
-        <button class="topcoat-button--cta" ng-click="update()" >Save</button>
-        <button class="topcoat-button" ng-click="cancel()">Cancel</button>
-      </li>
-    </ul>
+<navbar>
+  <button class="btn btn-default pull-left" ng-click="go('admin')">&lt; Back</button>
+  <div class="navbar-brand title">Free Footie - Divisions</div>
+</navbar>
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<form class="form-horizontal">
+      <property  ng-repeat="div in divs" class="form-group" title="Name" model="div.name"></property>
+      <div class="form-group" ng-show="needsSave">
+      	<div class="col-sm-12">
+      	  <button class="btn btn-primary pull-right" ng-click="update()" >Save</button>
+        	<button class="btn btn-default pull-right" ng-click="cancel()" style="margin-right:10px;">Cancel</button>
+        </div>
+      </div>
+      <div class="form-group">
+		<a class="col-xs-offset-1 col-sm-offset-3" href="#/admin/team">View list of all teams</a>
+      </div>
+</form>
 </div>
-<a href="#/admin/team">View list of all teams</a>
+</div>
+
+</div>
+

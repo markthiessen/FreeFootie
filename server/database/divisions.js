@@ -42,7 +42,8 @@ exports.getById = function(id){
 		//use the default mapper
 		if (err) deferred.reject(new Error(err));
 		else {
-			result._id = result._id.toHexString();
+			if(result)
+				result._id = result._id.toHexString();
 			deferred.resolve(result);
 		}
 	});

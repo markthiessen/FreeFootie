@@ -1,9 +1,12 @@
-<div class="topcoat-list">
-  <navbar>
-    <h1>This Week's Games</h1>
-  </navbar>
-  <ul class="topcoat-list__container">
-    <li ng-repeat="game in games" class="topcoat-list__item" ng-click="go('ref/game/' + game._id)" >
+<navbar>
+  <div class="navbar-brand title">This Week's Games</div>
+</navbar>
+
+<div class="container">
+<div class="row">
+<div class="col-sm-12">
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="game in games" ng-click="go('ref/game/' + game._id)" >
         <div style="display:inline-block;text-align:center;vertical-align:middle;margin-right: 20px;">
             <div>
                 {{game._home.name}}
@@ -14,10 +17,11 @@
                 {{game._away.name}}
             </div>
         </div>
-	    @
-	    {{game._location.name}}
-	    <span class="time">{{game.date | timeDistance}}</span>
-	    <span class="topcoat-list__expand"></span>
+      @
+      {{game._location.name}}
+      <span class="time">{{game.date | timeDistance}}</span>
     </li>
   </ul>
+</div>
+</div>
 </div>

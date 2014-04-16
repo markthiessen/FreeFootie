@@ -8,13 +8,14 @@
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,400italic' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,400italic' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="main.css">
 </head>
   <body ng-app="freefootieApp">
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+   
+    <div ng-view=""></div>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="//maps.googleapis.com/maps/api/js?sensor=false&language=en"></script>
@@ -39,6 +40,7 @@
     <script src="app/common/filters/timeDistance.js"></script>
     <script src="app/common/directives/back.js"></script>
     <script src="app/common/directives/property.js"></script>
+    <script src="app/common/directives/navbar.js"></script>
     <script src="app/common/directives/navigation.js"></script>
     <script src="app/common/directives/map.js"></script>
     <script src="app/ref/directives/purple-card.js"></script>

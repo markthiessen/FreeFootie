@@ -1,26 +1,23 @@
-<div class="topcoat-navigation-bar">
-	<div class="topcoat-navigation-bar__item left quarter">
-			<button class="topcoat-icon-button" ng-click="go('admin')">< Back</button>
-    </div>
-	<div class="topcoat-navigation-bar__item center half">
-        <h1 class="topcoat-navigation-bar__title">Teams</h1>
-    </div>
-    <div class="topcoat-navigation-bar__item right quarter">
-    </div>
-</div>
-
-<div class="topcoat-list">
+<navbar>
+  <button class="btn btn-default pull-left" ng-click="go('admin')">&lt; Back</button>
+  <div class="navbar-brand title">Free Footie - Teams</div>
+</navbar>
+<div class="container">
 	<div ng-repeat="(div, teams) in divs">
-  <h3 class="topcoat-list__header">{{divisions[div].name}}</h3>
-  <ul class="topcoat-list__container">
-    <li ng-repeat="team in teams | orderBy:'wins':true" class="topcoat-list__item" ng-click="go('admin/team/' + team._id)">
+  <h3>{{divisions[div].name}}</h3>
+  <ul class="list-group">
+    <li ng-repeat="team in teams | orderBy:'wins':true" class="list-group-item" ng-click="go('admin/team/' + team._id)">
      {{team.name}} ({{team.wins}}/{{team.losses}}/{{team.ties}})
      <span class="topcoat-list__expand"></span>
     </li>
-    <li class="edit-row">
-        <input type="text" class="topcoat-text-input" placeholder="New Team Name" ng-model="teams.newTeam"/>
-        <span style="flex-grow:1;"></span>
-        <a class="topcoat-button--cta" ng-click="add(teams.newTeam, div)">Add</a>
+    <li class="list-group-item edit-row">
+      <div class="input-group">
+          <input type="text" class="form-control" placeholder="New Team Name" ng-model="teams.newTeam"/>
+          <span class="input-group-btn">
+          <button type="button" class="btn btn-primary" ng-click="add(teams.newTeam, div)">Add</button>
+          </span>
+        </div>
     </li>
   </ul>
+
 </div>
